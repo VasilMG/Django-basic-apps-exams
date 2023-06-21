@@ -1,0 +1,67 @@
+<!-- Catalog with Albums-->
+{% extends 'base.html' %}
+{% block content %}
+<section id="catalogPage">
+    {% if not albums %}
+    <!--  If No albums in catalog -->
+    <p>No Albums in Catalog!</p>
+    {% else %}
+    <!-- If albums in catalog -->
+    <h1>All Albums</h1>
+    {%  for al in albums %}
+    <!-- First Card-Box in catalog -->
+    <div class="card-box">
+        <img src="{{ al.image_url }}" alt="Cover Image">
+        <div>
+            <div class="text-center">
+                <p class="name">Name: {{ al.name }}</p>
+                <p class="artist">Artist: {{ al.artist }}</p>
+                <p class="genre">Genre: {{ al.genre }}</p>
+                <p class="price">Price: ${{ al.price|floatformat:2 }}</p>
+            </div>
+            <div class="btn-group">
+                <a href="{% url 'album_details' pk=al.pk %}">Details</a>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+{% endif %}
+    <!-- End First Card-Box in catalog -->
+
+    <!-- Second Card-Box in catalog -->
+{#    <div class="card-box">#}
+{#        <img src="/static/images/pinkFloyd.jpg">#}
+{#        <div>#}
+{#            <div class="text-center">#}
+{#                <p class="name">Name: The Dark Side of the Moon</p>#}
+{#                <p class="artist">Artist: Pink Floyd</p>#}
+{#                <p class="genre">Genre: Rock Music</p>#}
+{#                <p class="price">Price: $28.75</p>#}
+{#            </div>#}
+{#            <div class="btn-group">#}
+{#                <a href="#">Details</a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <!-- End Second Card-Box in catalog -->#}
+{##}
+{#    <!-- Third Card-Box in catalog -->#}
+{#    <div class="card-box">#}
+{#        <img src="/static/images/Lorde.jpg">#}
+{#        <div>#}
+{#            <div class="text-center">#}
+{#                <p class="name">Name: Melodrama</p>#}
+{#                <p class="artist">Artist: Lorde</p>#}
+{#                <p class="genre">Genre: Pop Music</p>#}
+{#                <p class="price">Price: $7.33</p>#}
+{#            </div>#}
+{#            <div class="btn-group">#}
+{#                <a href="#">Details</a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <!-- End Third Card-Box in catalog -->#}
+
+</section>
+{% endblock %}
